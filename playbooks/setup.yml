@@ -1,0 +1,13 @@
+---
+- name: Workstation Setup
+  hosts: "{{ workstation_target | default('localhost') }}"
+  connection: "{{ workstation_connection | default('local') }}"
+
+  tasks:
+
+    - name: Include setup roles
+      ansible.builtin.include_role:
+        name: "{{ workstation_role }}"
+      loop: "{{ workstation_setup_roles | default([]) }}"
+      loop_control:
+        loop_var: workstation_role
