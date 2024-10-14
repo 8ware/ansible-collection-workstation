@@ -1,0 +1,10 @@
+---
+- name: Install pipx
+  ansible.builtin.apt:
+    package: pipx
+  become: yes
+
+- name: Install apps with pipx
+  community.general.pipx:
+    name: '{{ item }}'
+  loop: '{{ workstation_apps_pipx }}'

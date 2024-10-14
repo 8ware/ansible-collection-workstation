@@ -1,0 +1,6 @@
+---
+- name: Import tasks for APT-based apps
+  ansible.builtin.import_tasks: apt.yml
+
+- name: Import tasks for pipx-based apps
+  ansible.builtin.import_tasks: pipx.yml

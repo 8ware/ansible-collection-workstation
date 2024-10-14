@@ -1,0 +1,5 @@
+---
+- name: Install apps with APT
+  ansible.builtin.apt:
+    pkg: "{{ workstation_apps_apt }}"
+  become: yes

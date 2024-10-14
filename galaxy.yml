@@ -11,3 +11,6 @@ license_file: COPYING
 
 repository: https://github.com/8ware/ansible-collection-workstation.git
 issues: https://github.com/8ware/ansible-collection-workstation/issues
+
+dependencies:
+  community.general: '>=4.0.0'
