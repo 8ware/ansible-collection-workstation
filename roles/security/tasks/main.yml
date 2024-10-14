@@ -1,0 +1,5 @@
+---
+- name: Restrict read access to home directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}"
+    mode: '750'
