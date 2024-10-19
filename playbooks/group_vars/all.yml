@@ -1,0 +1,8 @@
+---
+xdg_data_home: "{{ ansible_env.XDG_DATA_HOME | default(ansible_env.HOME + '/.local/share') }}"
+xdg_data_dirs: "{{ ansible_env.XDG_DATA_DIRS | default('/usr/local/share/:/usr/share/') }}"
+xdg_config_home: "{{ ansible_env.XDG_CONFIG_HOME | default(ansible_env.HOME + '/.config') }}"
+xdg_config_dirs: "{{ ansible_env.XDG_CONFIG_DIRS | default('/etc/xdg') }}"
+xdg_state_home: "{{ ansible_env.XDG_STATE_HOME | default(ansible_env.HOME + '/.local/state') }}"
+xdg_cache_home: "{{ ansible_env.XDG_CACHE_HOME | default(ansible_env.HOME + '/.cache') }}"
+xdg_runtime_dir: "{{ ansible_env.XDG_RUNTIME_DIR }}"
