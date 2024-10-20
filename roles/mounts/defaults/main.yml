@@ -1,0 +1,7 @@
+---
+workstation_mounts_entries: []
+workstation_mounts_prerequisites:
+  - type: cifs
+    pkg: cifs-utils
+  - type: nfs
+    pkg: nfs-common

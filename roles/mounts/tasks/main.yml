@@ -1,0 +1,15 @@
+---
+- name: Ensure prerequisites
+  ansible.builtin.apt:
+    name: "{{ item.pkg }}"
+    state: "{{ workstation_mounts_entries | selectattr('type', 'equalto', item.type) | ternary('present', 'absent') }}"
+  loop: "{{ workstation_mounts_prerequisites }}"
+
+- name: Configure mount points
+  ansible.builtin.include_tasks: mountpoint.yml
+  loop: "{{ workstation_mounts_entries }}"
+  vars:
+    mount_src: "{{ item.src }}"
+    mount_path: "{{ item.path }}"
+    mount_type: "{{ item.type }}"
+    mount_opts: "{{ item.opts }}"

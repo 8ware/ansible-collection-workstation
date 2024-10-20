@@ -1,0 +1,17 @@
+---
+- name: "Create mount point {{ item.path }}"
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+  become: yes
+
+- name: "Configure mount point {{ item.path }}"
+  ansible.posix.mount:
+    src: "{{ item.src }}"
+    path: "{{ item.path }}"
+    fstype: "{{ item.type }}"
+    boot: false
+    opts: "{{ item.opts }}"
+    state: present
+  become: yes
+  notify: fstab modified
