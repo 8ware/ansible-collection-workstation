@@ -1,0 +1,5 @@
+---
+- name: Install brightnessctl
+  ansible.builtin.apt:
+    name: brightnessctl
+  become: yes

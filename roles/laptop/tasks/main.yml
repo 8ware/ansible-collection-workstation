@@ -1,0 +1,6 @@
+---
+- name: Include tasks to set up battery management
+  ansible.builtin.import_tasks: battery.yml
+
+- name: Include tasks to set up screen management
+  ansible.builtin.import_tasks: screen.yml
