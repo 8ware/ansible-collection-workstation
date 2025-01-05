@@ -1,7 +1,18 @@
 ---
-- name: Setup udev rules for low battery
-  ansible.builtin.template:
-    src: udev/99-lowbat.rules.j2
-    dest: /etc/udev/rules.d/99-lowbat.rules
+- name: Remove obsolete udev rules for low battery
+  ansible.builtin.file:
+    path: /etc/udev/rules.d/99-lowbat.rules
+    state: absent
   become: yes
   notify: udev rules changed
+
+- name: Install cbatticon package
+  ansible.builtin.apt:
+    name: cbatticon
+  become: yes
+
+- name: Install cbatticon service
+  ansible.builtin.copy:
+    src: systemd/cbatticon.service
+    dest: "{{ xdg_config_home }}/systemd/user/"
+  notify: cbatticon service updated

@@ -1,6 +1,0 @@
-# Suspend the system when battery level drops below 10 %
-SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="/bin/systemctl suspend"
-
-# Notify user if battery level drops below 20 %
-SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="1[0-9]", RUN+="/bin/su {{ ansible_env.USER }} -c '/usr/bin/notify-send -u critical Battery\ Level:\ $attr{capacity_level} Remaining\ capacity\ is\ $attr{capacity}\ %'"
-SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]",  RUN+="/bin/su {{ ansible_env.USER }} -c '/usr/bin/notify-send -u critical Battery\ Level:\ $attr{capacity_level} Remaining\ capacity\ is\ $attr{capacity}\ %'"

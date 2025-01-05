@@ -1,0 +1,9 @@
+[Unit]
+Description=Battery handling and tray icon
+
+[Service]
+ExecStart=cbatticon -c 'systemctl suspend'
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

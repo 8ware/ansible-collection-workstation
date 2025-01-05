@@ -5,3 +5,14 @@
   become: yes
   listen:
     - udev rules changed
+
+- name: Restart cbatticon service
+  ansible.builtin.systemd:
+    name: cbatticon
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+    scope: user
+  listen:
+    - cbatticon service updated
+  ignore_errors: yes
