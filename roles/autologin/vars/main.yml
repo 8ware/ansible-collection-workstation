@@ -1,0 +1,2 @@
+---
+workstation_autologin_dm_name: "{{ lookup('ansible.builtin.file', '/etc/X11/default-display-manager') | basename }}"

@@ -1,0 +1,14 @@
+---
+- name: Set default user
+  ansible.builtin.lineinfile:
+    path: /etc/slim.conf
+    search_string: '#default_user'
+    line: "default_user {{ ansible_env.USER }}"
+  become: yes
+
+- name: Enable auto-login
+  ansible.builtin.lineinfile:
+    path: /etc/slim.conf
+    search_string: '#auto_login'
+    line: "auto_login yes"
+  become: yes
