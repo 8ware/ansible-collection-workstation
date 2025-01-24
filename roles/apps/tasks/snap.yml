@@ -1,0 +1,5 @@
+---
+- name: Install apps with snap
+  community.general.snap:
+    name: '{{ workstation_apps_snap }}'
+  become: yes
