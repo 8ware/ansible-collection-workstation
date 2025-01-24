@@ -1,7 +1,7 @@
 ---
 - name: Install pipx
   ansible.builtin.apt:
-    package: pipx
+    name: pipx
   become: yes
 
 - name: Install apps with pipx
