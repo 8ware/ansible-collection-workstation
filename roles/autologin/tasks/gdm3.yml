@@ -1,0 +1,14 @@
+---
+- name: Set default user
+  ansible.builtin.lineinfile:
+    path: /etc/gdm3/custom.conf
+    search_string: '#  AutomaticLogin'
+    line: "AutomaticLogin = {{ ansible_env.USER }}"
+  become: yes
+
+- name: Enable auto-login
+  ansible.builtin.lineinfile:
+    path: /etc/gdm3/custom.conf
+    search_string: '#  AutomaticLoginEnable'
+    line: "AutomaticLoginEnable = true"
+  become: yes
