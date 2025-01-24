@@ -1,0 +1,12 @@
+---
+- name: Un/install snap
+  ansible.builtin.apt:
+    name: snapd
+    state: "{{ workstation_apps_snap_state }}"
+  become: yes
+
+- name: Install apps with snap
+  community.general.snap:
+    name: '{{ workstation_apps_snap }}'
+  when: workstation_apps_snap | length
+  become: yes

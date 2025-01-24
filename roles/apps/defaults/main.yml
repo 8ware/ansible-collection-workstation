@@ -1,3 +1,4 @@
 ---
 workstation_apps_apt: []
 workstation_apps_pipx: []
+workstation_apps_snap: []
