@@ -1,0 +1,2 @@
+---
+workstation_apps_pipx_state: "{{ workstation_apps_pipx | length | ternary('present', 'absent') }}"

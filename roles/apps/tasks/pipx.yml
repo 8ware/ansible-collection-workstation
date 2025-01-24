@@ -1,7 +1,8 @@
 ---
-- name: Install pipx
+- name: Un/install pipx
   ansible.builtin.apt:
     name: pipx
+    state: "{{ workstation_apps_pipx_state }}"
   become: yes
 
 - name: Install apps with pipx
