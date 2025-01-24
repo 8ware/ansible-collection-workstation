@@ -1,7 +1,7 @@
 ---
 - name: Install pipx
   ansible.builtin.apt:
-    package: pipx
+    name: pipx
   when: workstation_apps_pipx | length
   become: yes
 
