@@ -1,0 +1,15 @@
+---
+- name: Include tasks for Debian
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_distribution == 'Debian'
+
+- name: Include tasks for Ubuntu
+  ansible.builtin.include_tasks: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Grant access to libvirt
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    groups: libvirt
+    append: yes
+  become: yes

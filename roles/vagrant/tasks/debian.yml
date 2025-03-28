@@ -1,0 +1,8 @@
+---
+- name: Install Vagrant, libvirt and plugin
+  ansible.builtin.apt:
+    name:
+      - vagrant
+      - vagrant-libvirt
+      - libvirt-daemon-system
+  become: yes

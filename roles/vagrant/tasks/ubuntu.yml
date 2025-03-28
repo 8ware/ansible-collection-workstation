@@ -1,0 +1,33 @@
+---
+- name: Download HashiCorp's GPG keyring
+  ansible.builtin.get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /usr/share/keyrings/hashicorp-archive-keyring.asc
+  become: yes
+
+- name: Configure HashiCorp's APT repository
+  ansible.builtin.copy:
+    content: |
+      Types: deb
+      URIs: https://apt.releases.hashicorp.com
+      Suites: {{ ansible_distribution_release }}
+      Components: main
+      Signed-By: /usr/share/keyrings/hashicorp-archive-keyring.asc
+    dest: /etc/apt/sources.list.d/vagrant.sources
+  become: yes
+
+- name: Install Vagrant, libvirt and plugin dependencies
+  ansible.builtin.apt:
+    name:
+      - vagrant
+      - libvirt-daemon-system
+      - libvirt-dev
+      - build-essential
+      - ruby-dev
+    update_cache: yes
+  become: yes
+
+- name: Install Vagrant's libvirt plugin
+  ansible.builtin.command:
+    cmd: vagrant plugin install vagrant-libvirt
+    creates: "{{ ansible_user_dir }}/.vagrant.d/gems/*/gems/vagrant-libvirt-*/lib/vagrant-libvirt.rb"
