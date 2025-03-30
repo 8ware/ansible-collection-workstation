@@ -1,0 +1,10 @@
+---
+- name: Manage '{{ workstation_playground_username }}' user
+  ansible.builtin.user:
+    name: "{{ workstation_playground_username }}"
+    shell: /bin/bash
+    create_home: yes
+    remove: yes
+    force: yes
+    state: "{{ workstation_playground_state }}"
+  become: yes
